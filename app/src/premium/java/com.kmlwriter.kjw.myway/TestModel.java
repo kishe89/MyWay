@@ -8,7 +8,7 @@ public class TestModel {
     private String test;
 
     public TestModel() {
-        this.test = "premium";
+        this.test = MyWayApplication.getContext().getResources().getString(R.string.test_premium);
     }
     public String getTest() {
         return test;
