@@ -4,6 +4,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.TextView;
 
+import com.kmlwriter.kjw.myway.model.TestModel;
+
 public class MainActivity extends AppCompatActivity {
 
     private TextView textView;
