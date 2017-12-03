@@ -50,7 +50,17 @@ dependencies {
     androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
-    compile 'com.android.support:appcompat-v7:26.+'
+
     compile 'com.android.support.constraint:constraint-layout:1.0.2'
+    //animation library
+    compile 'com.airbnb.android:lottie:2.3.0'
+    //Field and method binding library
+    compile 'com.jakewharton:butterknife:8.8.1'
+    annotationProcessor 'com.jakewharton:butterknife-compiler:8.8.1'
+    //image load library
+    compile 'com.github.bumptech.glide:glide:4.3.1'
+
+    //oauth sdk
+    compile 'com.facebook.android:facebook-login:[4,5)'
     testCompile 'junit:junit:4.12'
 }

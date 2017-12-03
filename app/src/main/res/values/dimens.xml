@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="AppTitleSize">30sp</dimen>
+    <dimen name="main_world_animation_width">350dp</dimen>
+    <dimen name="main_world_animation_height">350dp</dimen>
+    <dimen name="AppTitle_marginTop">20dp</dimen>
+    <dimen name="login_btn_facebook_marginBottom">20dp</dimen>
+    <dimen name="login_btn_facebook_marginRight">20dp</dimen>
+    <dimen name="login_btn_facebook_marginLeft">20dp</dimen>
+</resources>
