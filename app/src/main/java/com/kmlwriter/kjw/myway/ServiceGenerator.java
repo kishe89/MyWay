@@ -29,7 +29,6 @@ public class ServiceGenerator {
 
         builder.client(httpClient.build());
         retrofit = builder.build();
-
         return retrofit.create(serviceClass);
     }
 }

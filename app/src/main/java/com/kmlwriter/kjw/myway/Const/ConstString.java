@@ -9,5 +9,6 @@ public class ConstString {
     public static final String BASE_V1_PATH = "v1/";
     public static final String BASE_USER_PATH = "users/";
     public static final String PROFILE_PATH = "profile/";
+    public static final String MY_FRIENDS_PATH = "my_friends/";
     public static final String FRIENDS_PATH = "friends/{Nick}/{App}/{AppId}";
 }

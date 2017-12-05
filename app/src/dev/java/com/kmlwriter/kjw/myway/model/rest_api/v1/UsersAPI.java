@@ -3,6 +3,7 @@ package com.kmlwriter.kjw.myway.model.rest_api.v1;
 import com.kmlwriter.kjw.myway.Const.ConstString;
 import com.kmlwriter.kjw.myway.model.rest_api.v1.model.Friend;
 import com.kmlwriter.kjw.myway.model.rest_api.v1.model.Friend_Response;
+import com.kmlwriter.kjw.myway.model.rest_api.v1.model.MyFriends;
 import com.kmlwriter.kjw.myway.model.rest_api.v1.model.Profile;
 import com.kmlwriter.kjw.myway.model.rest_api.v1.model.User;
 
@@ -81,4 +82,9 @@ public interface UsersAPI {
                                             @Path("AppId") String AppId,
                                             @Query("_id") String _id);
 
+    @GET(ConstString.BASE_V1_PATH+ConstString.MY_FRIENDS_PATH)
+    Call<MyFriends> MyFriendsSearch(@Header("x-access-token") String AccessToken,
+                                    @Query("Nick") String Nick,
+                                    @Query("App") String App,
+                                    @Query("AppId") String AppId);
 }
