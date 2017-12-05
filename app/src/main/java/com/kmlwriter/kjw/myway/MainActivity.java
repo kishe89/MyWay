@@ -89,6 +89,9 @@ public class MainActivity extends Activity {
                                 try {
                                     String profile_url = data.getJSONObject("data").getString("url");
                                     Glide.with(self).load(profile_url).into(image);
+                                    Intent intent = new Intent(self,ContainerActivity.class);
+                                    self.finish();
+                                    self.startActivity(intent);
                                 } catch (JSONException e){
                                     e.printStackTrace();
                                 }
@@ -122,7 +125,6 @@ public class MainActivity extends Activity {
 
     @Optional @OnClick(R.id.login_btn_facebook)
     protected void loginFacebook(){
-        Log.e("click","click");
         LoginManager.getInstance().logInWithReadPermissions(this, Arrays.asList("public_profile"));
     }
     @Override
