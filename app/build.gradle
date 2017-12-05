@@ -59,6 +59,10 @@ dependencies {
     annotationProcessor 'com.jakewharton:butterknife-compiler:8.8.1'
     //image load library
     compile 'com.github.bumptech.glide:glide:4.3.1'
+    //http library
+    compile 'com.squareup.retrofit2:retrofit:2.1.0'
+    compile 'com.google.code.gson:gson:2.6.2'
+    compile 'com.squareup.retrofit2:converter-gson:2.0.0-beta4'
 
     //oauth sdk
     compile 'com.facebook.android:facebook-login:[4,5)'
