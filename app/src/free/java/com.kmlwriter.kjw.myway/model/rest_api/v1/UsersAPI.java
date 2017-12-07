@@ -77,10 +77,10 @@ public interface UsersAPI {
 
     @DELETE(ConstString.BASE_V1_PATH+ConstString.BASE_USER_PATH+ConstString.FRIENDS_PATH)
     Call<Friend_Response> FriendRemove(@Header("x-access-token") String AccessToken,
-                                       @Path("Nick") String Nick,
-                                       @Path("App") String App,
-                                       @Path("AppId") String AppId,
-                                       @Query("_id") String _id);
+                                            @Path("Nick") String Nick,
+                                            @Path("App") String App,
+                                            @Path("AppId") String AppId,
+                                            @Query("_id") String _id);
 
     @GET(ConstString.BASE_V1_PATH+ConstString.MY_FRIENDS_PATH)
     Call<MyFriends> MyFriendsSearch(@Header("x-access-token") String AccessToken,

@@ -12,8 +12,7 @@
         android:layout_width="match_parent"
         android:layout_height="@dimen/tabLayout_height"
         android:layout_alignParentBottom="true"
-        android:background="?attr/colorControlHighlight"
-        android:elevation="6dp"
+        android:background="@color/standard_background"
         android:minHeight="?attr/actionBarSize"
         />
     <android.support.v4.view.ViewPager

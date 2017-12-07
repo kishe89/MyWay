@@ -67,37 +67,11 @@ public class MainActivity extends Activity {
                 Log.d("MainActivity","Success");
                 AccessToken loginResultAccessToken = loginResult.getAccessToken();
                 profile = getCurrentProfile();
+                Intent intent = new Intent(self,ContainerActivity.class);
+                self.finish();
+                self.startActivity(intent);
+                //runGraphAPI(loginResultAccessToken);
 
-                Log.d("MainActivity",profile.getName());
-                StringBuilder graphPath = new StringBuilder();
-                graphPath.append("/").append(loginResultAccessToken.getUserId()).append("/picture");
-//                graphPath.append("/").append("me").append("/picture");
-                Bundle parameters = new Bundle();
-//                parameters.putString("fields","picture.width(150).height(150)");
-                parameters.putInt("width",150);
-                parameters.putInt("height",150);
-                parameters.putBoolean("redirect", false);
-                new GraphRequest(
-                        AccessToken.getCurrentAccessToken(),
-                        graphPath.toString(),
-                        parameters,
-                        HttpMethod.GET,
-                        new GraphRequest.Callback() {
-                            public void onCompleted(GraphResponse response) {
-                                Log.e("profile",response.getJSONObject().toString());
-                                JSONObject data = response.getJSONObject();
-                                try {
-                                    String profile_url = data.getJSONObject("data").getString("url");
-                                    Glide.with(self).load(profile_url).into(image);
-                                    Intent intent = new Intent(self,ContainerActivity.class);
-                                    self.finish();
-                                    self.startActivity(intent);
-                                } catch (JSONException e){
-                                    e.printStackTrace();
-                                }
-                            }
-                        }
-                ).executeAsync();
             }
 
             @Override
@@ -121,6 +95,37 @@ public class MainActivity extends Activity {
                 }
             }
         });
+    }
+
+    private void runGraphAPI(AccessToken loginResultAccessToken) {
+        Log.d("MainActivity",profile.getName());
+        StringBuilder graphPath = new StringBuilder();
+        graphPath.append("/").append(loginResultAccessToken.getUserId()).append("/picture");
+        Bundle parameters = new Bundle();
+        parameters.putInt("width",150);
+        parameters.putInt("height",150);
+        parameters.putBoolean("redirect", false);
+        new GraphRequest(
+                AccessToken.getCurrentAccessToken(),
+                graphPath.toString(),
+                parameters,
+                HttpMethod.GET,
+                new GraphRequest.Callback() {
+                    public void onCompleted(GraphResponse response) {
+                        Log.e("profile",response.getJSONObject().toString());
+                        JSONObject data = response.getJSONObject();
+                        try {
+                            String profile_url = data.getJSONObject("data").getString("url");
+                            Glide.with(self).load(profile_url).into(image);
+                            Intent intent = new Intent(self,ContainerActivity.class);
+                            self.finish();
+                            self.startActivity(intent);
+                        } catch (JSONException e){
+                            e.printStackTrace();
+                        }
+                    }
+                }
+        ).executeAsync();
     }
 
     @Optional @OnClick(R.id.login_btn_facebook)

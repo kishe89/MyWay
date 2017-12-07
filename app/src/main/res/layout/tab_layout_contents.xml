@@ -5,40 +5,93 @@
     android:id="@+id/tabLayout"
     android:orientation="horizontal"
     xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.airbnb.lottie.LottieAnimationView
-        android:id="@+id/timeLineFragmentButton"
-        android:layout_weight="1"
-        android:layout_width="@dimen/tabLayout_height"
+    <RelativeLayout
+        android:layout_width="match_parent"
         android:layout_height="match_parent"
-        app:lottie_fileName="main_world_animation.json"
-        app:lottie_loop="true"
-        app:lottie_autoPlay="true"
-        />
-    <com.airbnb.lottie.LottieAnimationView
-        android:id="@+id/locationSaveFragmentButton"
         android:layout_weight="1"
-        android:layout_width="@dimen/tabLayout_height"
+        android:id="@+id/timeLineFragmentButton_Container"
+        >
+        <com.airbnb.lottie.LottieAnimationView
+            android:id="@+id/timeLineFragmentButton"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:lottie_fileName="animated_color_options.json"
+            />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="4dp"
+            android:layout_alignParentBottom="true"
+            android:text="마이스토리"
+            android:textSize="10sp"
+            android:textAlignment="center"
+            android:textColor="#000000"/>
+    </RelativeLayout>
+    <RelativeLayout
+        android:layout_width="match_parent"
         android:layout_height="match_parent"
-        app:lottie_fileName="main_world_animation.json"
-        app:lottie_loop="true"
-        app:lottie_autoPlay="true"
-        />
-    <com.airbnb.lottie.LottieAnimationView
-        android:id="@+id/fileSearchFragmentButton"
         android:layout_weight="1"
-        android:layout_width="@dimen/tabLayout_height"
+        android:id="@+id/locationSaveFragmentButton_Container">
+        <com.airbnb.lottie.LottieAnimationView
+            android:id="@+id/locationSaveFragmentButton"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:lottie_fileName="location_pin.json"
+            />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="4dp"
+            android:layout_alignParentBottom="true"
+            android:text="마이스토리"
+            android:textSize="10sp"
+            android:textAlignment="center"
+            android:textColor="#000000"/>
+    </RelativeLayout>
+    <RelativeLayout
+        android:layout_width="match_parent"
         android:layout_height="match_parent"
-        app:lottie_fileName="main_world_animation.json"
-        app:lottie_loop="true"
-        app:lottie_autoPlay="true"
-        />
-    <com.airbnb.lottie.LottieAnimationView
-        android:id="@+id/moreFragmentButton"
         android:layout_weight="1"
-        android:layout_width="@dimen/tabLayout_height"
+        android:id="@+id/fileSearchFragmentButton_Container">
+        <com.airbnb.lottie.LottieAnimationView
+            android:id="@+id/fileSearchFragmentButton"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:lottie_fileName="main_world_animation.json"
+            app:lottie_loop="true"
+            app:lottie_autoPlay="true"
+            />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="4dp"
+            android:layout_alignParentBottom="true"
+            android:text="마이스토리"
+            android:textSize="10sp"
+            android:textAlignment="center"
+            android:textColor="#000000"/>
+    </RelativeLayout>
+    <RelativeLayout
+        android:layout_width="match_parent"
         android:layout_height="match_parent"
-        app:lottie_fileName="main_world_animation.json"
-        app:lottie_loop="true"
-        app:lottie_autoPlay="true"
-        />
+        android:layout_weight="1"
+        android:id="@+id/moreFragmentButton_Container">
+        <com.airbnb.lottie.LottieAnimationView
+            android:id="@+id/moreFragmentButton"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:lottie_fileName="main_world_animation.json"
+            app:lottie_loop="true"
+            app:lottie_autoPlay="true"
+            />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="4dp"
+            android:layout_alignParentBottom="true"
+            android:text="마이스토리"
+            android:textSize="10sp"
+            android:textAlignment="center"
+            android:textColor="#000000"/>
+    </RelativeLayout>
 </LinearLayout>
