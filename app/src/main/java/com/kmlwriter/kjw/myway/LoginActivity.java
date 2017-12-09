@@ -1,18 +1,16 @@
 package com.kmlwriter.kjw.myway;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.os.Bundle;
+import android.os.Environment;
 import android.support.annotation.Nullable;
 import android.util.Log;
-import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.Toast;
 
-import com.bumptech.glide.Glide;
 import com.facebook.AccessToken;
 import com.facebook.CallbackManager;
 import com.facebook.FacebookAuthorizationException;
@@ -26,11 +24,23 @@ import com.facebook.Profile;
 import com.facebook.appevents.AppEventsLogger;
 import com.facebook.login.LoginManager;
 import com.facebook.login.LoginResult;
+import com.kmlwriter.kjw.myway.const_string.ConstString;
+import com.kmlwriter.kjw.myway.model.rest_api.v1.UsersAPI;
+import com.kmlwriter.kjw.myway.model.rest_api.v1.model.User;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
+import java.net.MalformedURLException;
+import android.net.Uri;
+
+import java.net.URISyntaxException;
 import java.net.URL;
 import java.util.Arrays;
 
@@ -38,10 +48,16 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import butterknife.Optional;
+import okhttp3.MediaType;
+import okhttp3.MultipartBody;
+import okhttp3.RequestBody;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 import static com.facebook.Profile.getCurrentProfile;
 
-public class MainActivity extends Activity {
+public class LoginActivity extends Activity{
 
     @Nullable @BindView(R.id.login_btn_facebook) Button login_btn_facebook;
     @Nullable @BindView(R.id.image) ImageView image;
@@ -51,7 +67,7 @@ public class MainActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_login);
         ButterKnife.bind(this);
         self = this;
         FacebookInitialize();
@@ -64,13 +80,10 @@ public class MainActivity extends Activity {
         LoginManager.getInstance().registerCallback(callbackManager, new FacebookCallback<LoginResult>() {
             @Override
             public void onSuccess(LoginResult loginResult) {
-                Log.d("MainActivity","Success");
+                Log.d("LoginActivity","Success");
                 AccessToken loginResultAccessToken = loginResult.getAccessToken();
                 profile = getCurrentProfile();
-                Intent intent = new Intent(self,ContainerActivity.class);
-                self.finish();
-                self.startActivity(intent);
-                //runGraphAPI(loginResultAccessToken);
+                runGraphAPI(loginResultAccessToken);
 
             }
 
@@ -98,7 +111,8 @@ public class MainActivity extends Activity {
     }
 
     private void runGraphAPI(AccessToken loginResultAccessToken) {
-        Log.d("MainActivity",profile.getName());
+
+        Log.d("LoginActivity",profile.getName());
         StringBuilder graphPath = new StringBuilder();
         graphPath.append("/").append(loginResultAccessToken.getUserId()).append("/picture");
         Bundle parameters = new Bundle();
@@ -111,16 +125,36 @@ public class MainActivity extends Activity {
                 parameters,
                 HttpMethod.GET,
                 new GraphRequest.Callback() {
+                    public UsersAPI UserApi;
+
                     public void onCompleted(GraphResponse response) {
                         Log.e("profile",response.getJSONObject().toString());
                         JSONObject data = response.getJSONObject();
                         try {
-                            String profile_url = data.getJSONObject("data").getString("url");
-                            Glide.with(self).load(profile_url).into(image);
-                            Intent intent = new Intent(self,ContainerActivity.class);
-                            self.finish();
-                            self.startActivity(intent);
+                            String profile_url_string = data.getJSONObject("data").getString("url");
+                            URL url = new URL(profile_url_string);
+                            new UrlConvertToFileTask(self, profile, url, new ConvertListener() {
+                                @Override
+                                public void ConvertSuccess(Call<User> call) {
+                                    call.enqueue(new Callback<User>() {
+                                        @Override
+                                        public void onResponse(Call<User> call, Response<User> response) {
+                                            Log.e("signup",response.toString());
+                                        }
+
+                                        @Override
+                                        public void onFailure(Call<User> call, Throwable t) {
+                                            Log.e("signup",t.toString());
+                                        }
+                                    });
+                                }
+                            }).execute();
+
                         } catch (JSONException e){
+                            e.printStackTrace();
+                        } catch (MalformedURLException e) {
+                            e.printStackTrace();
+                        } catch (IOException e) {
                             e.printStackTrace();
                         }
                     }

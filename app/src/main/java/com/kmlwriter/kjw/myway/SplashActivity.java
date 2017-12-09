@@ -1,7 +1,6 @@
 package com.kmlwriter.kjw.myway;
 
 import android.app.Activity;
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
@@ -19,7 +18,7 @@ public class SplashActivity extends Activity {
     }
     private class splashhandler implements Runnable{
         public void run() {
-            Intent intent = new Intent(context,MainActivity.class);
+            Intent intent = new Intent(context,LoginActivity.class);
             context.startActivity(intent);
             context.finish();
         }

@@ -1,10 +1,15 @@
-package com.kmlwriter.kjw.myway.Const;
+package com.kmlwriter.kjw.myway.const_string;
 
 /**
  * Created by kjw on 2017. 12. 5..
  */
 
 public class ConstString {
+
+    /**
+     * Authorization App
+     */
+    public static final String Authorization_FACEBOOK = "facebook";
 
     /**
      * Host URL Space

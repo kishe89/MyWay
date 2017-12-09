@@ -8,7 +8,7 @@ import java.util.Date;
  * Created by kjw on 2017. 12. 5..
  */
 
-public class Article implements Serializable{
+public class Article extends BaseObject implements Serializable{
     private String Kml_Uri;
     private String Contents;
     private int Like;
@@ -20,4 +20,19 @@ public class Article implements Serializable{
     private String PostedBy;
     private Date CreatedAt;
     private Date UpdatedAt;
+    private int viewType;
+
+
+    public Article(int viewType) {
+        super(viewType);
+        setViewType(viewType);
+    }
+
+    public int getViewType() {
+        return viewType;
+    }
+
+    public void setViewType(int viewType) {
+        this.viewType = viewType;
+    }
 }

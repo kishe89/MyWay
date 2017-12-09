@@ -1,6 +1,6 @@
 package com.kmlwriter.kjw.myway.model.rest_api.v1;
 
-import com.kmlwriter.kjw.myway.Const.ConstString;
+import com.kmlwriter.kjw.myway.const_string.ConstString;
 import com.kmlwriter.kjw.myway.model.rest_api.v1.model.Friend;
 import com.kmlwriter.kjw.myway.model.rest_api.v1.model.Friend_Response;
 import com.kmlwriter.kjw.myway.model.rest_api.v1.model.MyFriends;

@@ -3,10 +3,23 @@ package com.kmlwriter.kjw.myway;
 import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import com.kmlwriter.kjw.myway.model.adapter.mystory.MyStoryAdapter;
+import com.kmlwriter.kjw.myway.model.rest_api.v1.model.Article;
+import com.kmlwriter.kjw.myway.model.rest_api.v1.model.BaseObject;
+
+import java.util.ArrayList;
+
+import butterknife.BindView;
+import butterknife.ButterKnife;
 
 
 /**
@@ -20,6 +33,7 @@ import android.view.ViewGroup;
 public class BlankFragment extends Fragment {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
+
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
 
@@ -28,6 +42,7 @@ public class BlankFragment extends Fragment {
     private String mParam2;
 
     private OnFragmentInteractionListener mListener;
+    private View rootView;
 
     public BlankFragment() {
         // Required empty public constructor
@@ -58,13 +73,27 @@ public class BlankFragment extends Fragment {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
+
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_blank, container, false);
+        rootView = inflater.inflate(R.layout.fragment_blank, container, false);
+        RecyclerView MyStoryRecyclerView = (RecyclerView)rootView.findViewById(R.id.MyStoryRecyclerView);
+        MyStoryRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+        MyStoryAdapter adapter = new MyStoryAdapter(this.getContext());
+        ArrayList<BaseObject> articles = adapter.getmArticles();
+        Article article1 = new Article(1);
+        Article article2 = new Article(1);
+        article2.setViewType(1);
+        articles.add(article1);
+        articles.add(article2);
+        adapter.setmArticles(articles);
+        MyStoryRecyclerView.setAdapter(adapter);
+        adapter.notifyDataSetChanged();
+        return rootView;
     }
 
     // TODO: Rename method, update argument and hook method into UI event

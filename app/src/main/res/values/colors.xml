@@ -11,4 +11,5 @@
     <color name="standard_title_color">#FFE57F</color>
     <color name="kakaotalk_login_button_normal">#FFD600</color>
     <color name="kakaotalk_login_button_select">#FFEA00</color>
+    <color name="cardview_background">#EFEBE9</color>
 </resources>

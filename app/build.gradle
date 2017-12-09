@@ -70,6 +70,11 @@ dependencies {
     compile 'com.google.code.gson:gson:2.6.2'
     compile 'com.squareup.retrofit2:converter-gson:2.0.0-beta4'
 
+    //map view
+    compile 'com.google.android.gms:play-services-maps:11.2.2'
+
+    //image view library
+    compile 'de.hdodenhof:circleimageview:2.2.0'
     //oauth sdk
     compile 'com.facebook.android:facebook-login:4.28.0'
     testCompile 'junit:junit:4.12'

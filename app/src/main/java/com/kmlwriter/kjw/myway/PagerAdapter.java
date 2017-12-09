@@ -21,16 +21,16 @@ public class PagerAdapter extends FragmentPagerAdapter{
     public Fragment getItem(int position) {
         switch (position) {
             case 0:
-                BlankFragment tab1 = new BlankFragment();
+                BlankFragment tab1 = BlankFragment.newInstance("dd","dd");
                 return tab1;
             case 1:
-                BlankFragment tab2 = new BlankFragment();
+                BlankFragment tab2 = BlankFragment.newInstance("dd","dd");
                 return tab2;
             case 2:
-                BlankFragment tab3 = new BlankFragment();
+                BlankFragment tab3 = BlankFragment.newInstance("dd","dd");
                 return tab3;
             case 3:
-                BlankFragment tab4 = new BlankFragment();
+                BlankFragment tab4 = BlankFragment.newInstance("dd","dd");
                 return tab4;
             default:
                 return null;

@@ -2,7 +2,7 @@ package com.kmlwriter.kjw.myway;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import com.kmlwriter.kjw.myway.Const.ConstString;
+import com.kmlwriter.kjw.myway.const_string.ConstString;
 
 import okhttp3.OkHttpClient;
 import retrofit2.Retrofit;
