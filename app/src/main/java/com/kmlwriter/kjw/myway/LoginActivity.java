@@ -25,6 +25,7 @@ import com.facebook.appevents.AppEventsLogger;
 import com.facebook.login.LoginManager;
 import com.facebook.login.LoginResult;
 import com.kmlwriter.kjw.myway.const_string.ConstString;
+import com.kmlwriter.kjw.myway.const_string.ResponseCode;
 import com.kmlwriter.kjw.myway.model.rest_api.v1.UsersAPI;
 import com.kmlwriter.kjw.myway.model.rest_api.v1.model.User;
 
@@ -139,12 +140,14 @@ public class LoginActivity extends Activity{
                                     call.enqueue(new Callback<User>() {
                                         @Override
                                         public void onResponse(Call<User> call, Response<User> response) {
-                                            Log.e("signup",response.toString());
+                                            if(response.isSuccessful()||response.code()== ResponseCode.DUPLICATE_CODE.getCode()){
+                                                Toast.makeText(self,"성공"+response.code(),Toast.LENGTH_SHORT).show();
+                                            }
                                         }
 
                                         @Override
                                         public void onFailure(Call<User> call, Throwable t) {
-                                            Log.e("signup",t.toString());
+                                            Toast.makeText(self,self.getResources().getString(R.string.request_fail_internal_string),Toast.LENGTH_SHORT).show();
                                         }
                                     });
                                 }

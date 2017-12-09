@@ -1,14 +1,15 @@
 package com.kmlwriter.kjw.myway;
 
 import android.app.Activity;
-import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Environment;
+import android.os.Handler;
 import android.util.Log;
 import android.widget.Toast;
 
 import com.facebook.Profile;
 import com.kmlwriter.kjw.myway.const_string.ConstString;
+import com.kmlwriter.kjw.myway.loading_view.Loading_wait_dialog;
 import com.kmlwriter.kjw.myway.model.rest_api.v1.UsersAPI;
 import com.kmlwriter.kjw.myway.model.rest_api.v1.model.User;
 
@@ -35,11 +36,13 @@ public class UrlConvertToFileTask extends AsyncTask<Void,Void,Void> {
     private URL url;
     private File profile_File;
     private ConvertListener listener;
+    private Loading_wait_dialog wait_dialog;
     public UrlConvertToFileTask(Activity self,Profile profile,URL url,ConvertListener listener) {
         this.self = self;
         this.profile = profile;
         this.url = url;
         this.listener = listener;
+        this.wait_dialog = new Loading_wait_dialog(self);
     }
 
     @Override
@@ -67,12 +70,15 @@ public class UrlConvertToFileTask extends AsyncTask<Void,Void,Void> {
     @Override
     protected void onPreExecute() {
         super.onPreExecute();
+        wait_dialog.show();
 
     }
 
     @Override
     protected void onPostExecute(Void aVoid) {
         super.onPostExecute(aVoid);
+        Handler hd = new Handler();
+        hd.postDelayed(new WaitDialogHandler(),3000);
         UserApi = ServiceGenerator.createRetrofitService(UsersAPI.class);
         RequestBody Nick = RequestBody.create(MultipartBody.FORM, profile.getName());
         RequestBody App = RequestBody.create(MultipartBody.FORM, ConstString.Authorization_FACEBOOK);
@@ -120,4 +126,10 @@ public class UrlConvertToFileTask extends AsyncTask<Void,Void,Void> {
         }
     }
 
+    private class WaitDialogHandler implements Runnable {
+        @Override
+        public void run() {
+            wait_dialog.dismiss();
+        }
+    }
 }
