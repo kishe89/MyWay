@@ -9,7 +9,7 @@ import android.widget.Toast;
 
 import com.facebook.Profile;
 import com.kmlwriter.kjw.myway.const_string.ConstString;
-import com.kmlwriter.kjw.myway.loading_view.Loading_wait_dialog;
+import com.kmlwriter.kjw.myway.loading_view.Account_Save_WaitDialog;
 import com.kmlwriter.kjw.myway.model.rest_api.v1.UsersAPI;
 import com.kmlwriter.kjw.myway.model.rest_api.v1.model.User;
 
@@ -36,13 +36,13 @@ public class UrlConvertToFileTask extends AsyncTask<Void,Void,Void> {
     private URL url;
     private File profile_File;
     private ConvertListener listener;
-    private Loading_wait_dialog wait_dialog;
+    private Account_Save_WaitDialog wait_dialog;
     public UrlConvertToFileTask(Activity self,Profile profile,URL url,ConvertListener listener) {
         this.self = self;
         this.profile = profile;
         this.url = url;
         this.listener = listener;
-        this.wait_dialog = new Loading_wait_dialog(self);
+        this.wait_dialog = new Account_Save_WaitDialog(self);
     }
 
     @Override

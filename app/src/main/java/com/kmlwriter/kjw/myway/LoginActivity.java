@@ -61,6 +61,7 @@ import static com.facebook.Profile.getCurrentProfile;
 public class LoginActivity extends Activity{
 
     @Nullable @BindView(R.id.login_btn_facebook) Button login_btn_facebook;
+    @Nullable @BindView(R.id.login_btn_kakaotalk) Button login_btn_kakaotalk;
     @Nullable @BindView(R.id.image) ImageView image;
     private CallbackManager callbackManager;
     private Profile profile;
@@ -97,6 +98,7 @@ public class LoginActivity extends Activity{
                 if (AccessToken.getCurrentAccessToken() != null) {
                     LoginManager.getInstance().logOut();
                 }
+                setLoginButtonClickable();
             }
 
             @Override
@@ -107,6 +109,7 @@ public class LoginActivity extends Activity{
                         LoginManager.getInstance().logOut();
                     }
                 }
+                setLoginButtonClickable();
             }
         });
     }
@@ -144,9 +147,9 @@ public class LoginActivity extends Activity{
                                                 Toast.makeText(self,"성공"+response.code(),Toast.LENGTH_SHORT).show();
                                             }
                                         }
-
                                         @Override
                                         public void onFailure(Call<User> call, Throwable t) {
+                                            setLoginButtonClickable();
                                             Toast.makeText(self,self.getResources().getString(R.string.request_fail_internal_string),Toast.LENGTH_SHORT).show();
                                         }
                                     });
@@ -167,10 +170,27 @@ public class LoginActivity extends Activity{
 
     @Optional @OnClick(R.id.login_btn_facebook)
     protected void loginFacebook(){
+        setLoginButtonClickable();
+        LoginManager.getInstance().logInWithReadPermissions(this, Arrays.asList("public_profile"));
+    }
+    @Optional @OnClick(R.id.login_btn_kakaotalk)
+    protected void loginKakaotalk(){
+        setLoginButtonClickable();
         LoginManager.getInstance().logInWithReadPermissions(this, Arrays.asList("public_profile"));
     }
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         callbackManager.onActivityResult(requestCode,resultCode,data);
+    }
+
+    protected void setLoginButtonClickable(){
+        if(login_btn_facebook.isClickable()){
+            login_btn_facebook.setClickable(false);
+            login_btn_kakaotalk.setClickable(false);
+        }else{
+            login_btn_facebook.setClickable(true);
+            login_btn_kakaotalk.setClickable(false);
+        }
+
     }
 }

@@ -23,4 +23,9 @@ public class SplashActivity extends Activity {
             context.finish();
         }
     }
+
+    @Override
+    public void onBackPressed() {
+
+    }
 }
