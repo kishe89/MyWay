@@ -70,8 +70,12 @@ public class UrlConvertToFileTask extends AsyncTask<Void,Void,Void> {
     @Override
     protected void onPreExecute() {
         super.onPreExecute();
-        wait_dialog.show();
 
+        Log.e("isfinishing",self.isFinishing()+"");
+        if(!wait_dialog.isShowing()&& !self.isFinishing()){
+            wait_dialog.dismiss();
+            wait_dialog.show();
+        }
     }
 
     @Override
@@ -129,7 +133,16 @@ public class UrlConvertToFileTask extends AsyncTask<Void,Void,Void> {
     private class WaitDialogHandler implements Runnable {
         @Override
         public void run() {
+            if(wait_dialog.isShowing()&& !self.isFinishing())
             wait_dialog.dismiss();
         }
+    }
+
+    public boolean waitDialog_isShowing(){
+        return wait_dialog.isShowing();
+    }
+    public void waitDialog_dismiss(){
+        if(wait_dialog != null)
+        wait_dialog.dismiss();
     }
 }

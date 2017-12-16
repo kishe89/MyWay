@@ -17,7 +17,7 @@ public class Article extends BaseObject implements Serializable{
     private int Publish_range;
     private ArrayList<String>Article_List;
     private ArrayList<String>Comments;
-    private String PostedBy;
+    private PostedByUser PostedBy;
     private Date CreatedAt;
     private Date UpdatedAt;
     private int viewType;
@@ -35,4 +35,59 @@ public class Article extends BaseObject implements Serializable{
     public void setViewType(int viewType) {
         this.viewType = viewType;
     }
+
+    public ArrayList<String> getFilesURI(){
+        ArrayList<String> getFilesURI = new ArrayList<>();
+        if(this.Kml_Uri != null && (!(this.Kml_Uri.isEmpty()))){
+            getFilesURI.add(Kml_Uri);
+        }
+        getFilesURI.addAll(Article_List);
+        return getFilesURI;
+    }
+
+    public String getKml_Uri() {
+        return Kml_Uri;
+    }
+
+    public String getContents() {
+        return Contents;
+    }
+
+    public int getLike() {
+        return Like;
+    }
+
+    public String getLike_Persons() {
+        return Like_Persons;
+    }
+
+    public ArrayList<String> getImages() {
+        return Images;
+    }
+
+    public int getPublish_range() {
+        return Publish_range;
+    }
+
+    public ArrayList<String> getArticle_List() {
+        return Article_List;
+    }
+
+    public ArrayList<String> getComments() {
+        return Comments;
+    }
+
+    public PostedByUser getPostedBy() {
+        return PostedBy;
+    }
+
+    public Date getCreatedAt() {
+        return CreatedAt;
+    }
+
+    public Date getUpdatedAt() {
+        return UpdatedAt;
+    }
+
+
 }

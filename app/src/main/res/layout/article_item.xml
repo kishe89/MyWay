@@ -3,7 +3,6 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-
     android:minHeight="180dp"
     android:maxHeight="600dp"
     android:background="@drawable/cardview_background_drawable">
@@ -50,16 +49,11 @@
             android:text="@string/test_text"
             android:textColor="@color/cardview_dark_background"
             android:textSize="12sp"/>
-        <com.google.android.gms.maps.MapView
-            android:id="@+id/map_view"
+        <android.support.v7.widget.RecyclerView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:minHeight="300dp"
-            android:maxHeight="300dp"
-            android:maxWidth="300dp"
+            android:layout_height="300dp"
             android:layout_below="@id/contents_text_view"
-            android:layout_centerHorizontal="true">
-        </com.google.android.gms.maps.MapView>
+            android:id="@+id/file_view"/>
     </RelativeLayout>
     <RelativeLayout
         android:layout_below="@id/contents_container"
@@ -123,7 +117,7 @@
     </RelativeLayout>
     <RelativeLayout
         android:id="@+id/button_container"
-        android:background="@color/com_facebook_blue"
+        android:background="@drawable/cardview_button_container_background"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/article_information_container">

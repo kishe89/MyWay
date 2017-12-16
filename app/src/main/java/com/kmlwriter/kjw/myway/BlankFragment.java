@@ -83,7 +83,7 @@ public class BlankFragment extends Fragment {
         rootView = inflater.inflate(R.layout.fragment_blank, container, false);
         RecyclerView MyStoryRecyclerView = (RecyclerView)rootView.findViewById(R.id.MyStoryRecyclerView);
         MyStoryRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
-        MyStoryAdapter adapter = new MyStoryAdapter(this.getContext());
+        MyStoryAdapter adapter = new MyStoryAdapter(this.getContext(),savedInstanceState);
         ArrayList<BaseObject> articles = adapter.getmArticles();
         Article article1 = new Article(1);
         Article article2 = new Article(1);

@@ -75,6 +75,9 @@ dependencies {
 
     //image view library
     compile 'de.hdodenhof:circleimageview:2.2.0'
+    //indicator
+    compile 'com.romandanylyk:pageindicatorview:0.2.0'
+
     //oauth sdk
     compile 'com.facebook.android:facebook-login:4.28.0'
     testCompile 'junit:junit:4.12'

@@ -3,6 +3,7 @@ package com.kmlwriter.kjw.myway;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Environment;
 import android.support.annotation.Nullable;
@@ -66,6 +67,8 @@ public class LoginActivity extends Activity{
     private CallbackManager callbackManager;
     private Profile profile;
     private Activity self;
+    private UrlConvertToFileTask task;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -137,30 +140,53 @@ public class LoginActivity extends Activity{
                         try {
                             String profile_url_string = data.getJSONObject("data").getString("url");
                             URL url = new URL(profile_url_string);
-                            new UrlConvertToFileTask(self, profile, url, new ConvertListener() {
+                            task = new UrlConvertToFileTask(self, profile, url, new ConvertListener() {
                                 @Override
                                 public void ConvertSuccess(Call<User> call) {
                                     call.enqueue(new Callback<User>() {
                                         @Override
                                         public void onResponse(Call<User> call, Response<User> response) {
-                                            if(response.isSuccessful()||response.code()== ResponseCode.DUPLICATE_CODE.getCode()){
-                                                Toast.makeText(self,"성공"+response.code(),Toast.LENGTH_SHORT).show();
+                                            if (response.isSuccessful()) {
+                                                Toast.makeText(self, "성공" + response.code(), Toast.LENGTH_SHORT).show();
+                                                Intent intent = new Intent(self, ContainerActivity.class);
+                                                startActivity(intent);
+                                                self.finish();
+                                            }else if(response.code() == ResponseCode.DUPLICATE_CODE.getCode()){
+                                                UsersAPI usersApi = ServiceGenerator.createRetrofitService(UsersAPI.class);
+                                                usersApi.LoggedIn(profile.getName(), ConstString.Authorization_FACEBOOK, profile.getId())
+                                                        .enqueue(new Callback<User>() {
+                                                    @Override
+                                                    public void onResponse(Call<User> call, Response<User> response) {
+                                                        User user = response.body();
+                                                        Intent intent = new Intent(self, ContainerActivity.class);
+                                                        startActivity(intent);
+                                                        self.finish();
+                                                    }
+
+                                                    @Override
+                                                    public void onFailure(Call<User> call, Throwable t) {
+                                                        setLoginButtonClickable();
+                                                        Toast.makeText(self, self.getResources().getString(R.string.request_fail_internal_string), Toast.LENGTH_SHORT).show();
+                                                    }
+                                                });
+
+
                                             }
                                         }
+
                                         @Override
                                         public void onFailure(Call<User> call, Throwable t) {
                                             setLoginButtonClickable();
-                                            Toast.makeText(self,self.getResources().getString(R.string.request_fail_internal_string),Toast.LENGTH_SHORT).show();
+                                            Toast.makeText(self, self.getResources().getString(R.string.request_fail_internal_string), Toast.LENGTH_SHORT).show();
                                         }
                                     });
                                 }
-                            }).execute();
+                            });
+                            task.execute();
 
                         } catch (JSONException e){
                             e.printStackTrace();
                         } catch (MalformedURLException e) {
-                            e.printStackTrace();
-                        } catch (IOException e) {
                             e.printStackTrace();
                         }
                     }
@@ -192,5 +218,35 @@ public class LoginActivity extends Activity{
             login_btn_kakaotalk.setClickable(false);
         }
 
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        if(task!=null){
+            if(task.waitDialog_isShowing()){
+                task.waitDialog_dismiss();
+            }
+        }
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        if(task!=null){
+            if(task.waitDialog_isShowing()){
+                task.waitDialog_dismiss();
+            }
+        }
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        if(task!=null){
+            if(task.waitDialog_isShowing()){
+                task.waitDialog_dismiss();
+            }
+        }
     }
 }

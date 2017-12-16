@@ -28,7 +28,7 @@ public class ConstString {
     public static final String PROFILE_PATH = "profile/";
     public static final String MY_FRIENDS_PATH = "my_friends/";
     public static final String FRIENDS_PATH = "friends/{Nick}/{App}/{AppId}";
-
+    public static final String LOGGEDIN = "login";
 
     /**
      * Articles Path Space

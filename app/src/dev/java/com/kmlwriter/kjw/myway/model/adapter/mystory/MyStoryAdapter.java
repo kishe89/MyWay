@@ -1,10 +1,12 @@
 package com.kmlwriter.kjw.myway.model.adapter.mystory;
 
 import android.content.Context;
+import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.ViewGroup;
 
+import com.kmlwriter.kjw.myway.model.rest_api.v1.model.Article;
 import com.kmlwriter.kjw.myway.model.rest_api.v1.model.BaseObject;
 
 import java.util.ArrayList;
@@ -16,10 +18,11 @@ import java.util.ArrayList;
 public class MyStoryAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     private ArrayList<BaseObject> mArticles;
     private Context mContext;
-
-    public MyStoryAdapter(Context mContext) {
+    private Bundle ParentsavedInstanceState;
+    public MyStoryAdapter(Context mContext, Bundle savedInstanceState) {
         this.mArticles = new ArrayList<>();
         this.mContext = mContext;
+        this.ParentsavedInstanceState = savedInstanceState;
     }
 
     public ArrayList<BaseObject> getmArticles() {
@@ -51,7 +54,7 @@ public class MyStoryAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
         if(((MyWayViewHolder)holder).getViewType()==MyStoryViewType.MY_STORY_VIEW_TYPE.getType()){
             ((MyWayViewHolder) holder).bindData(mArticles.get(position));
-
+            ((MyStoryViewHolder) holder).setFileAdapter(mContext, (Article) mArticles.get(position));
         } else if(((MyWayViewHolder)holder).getViewType()==MyStoryViewType.My_STORY_TOP_LOADER_TYPE.getType()){
             ((MyWayViewHolder) holder).bindData(mArticles.get(position));
 
