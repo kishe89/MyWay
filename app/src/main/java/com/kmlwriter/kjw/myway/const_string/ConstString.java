@@ -7,6 +7,11 @@ package com.kmlwriter.kjw.myway.const_string;
 public class ConstString {
 
     /**
+     * Realm String
+     */
+    public static final String REALM_NAME = "MyWayDataBase.realm";
+
+    /**
      * Authorization App
      */
     public static final String Authorization_FACEBOOK = "facebook";

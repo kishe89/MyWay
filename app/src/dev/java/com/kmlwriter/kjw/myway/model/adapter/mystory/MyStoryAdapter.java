@@ -38,15 +38,15 @@ public class MyStoryAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
 
 
         if(viewType == MyStoryViewType.MY_STORY_VIEW_TYPE.getType()){
-            return MyStoryViewHolder.newInstance(mContext,parent);
+            return MyStoryViewHolder.newInstance(mContext,parent,ParentsavedInstanceState);
         }else if(viewType == MyStoryViewType.My_STORY_TOP_LOADER_TYPE.getType()){
-            return MyStoryViewHolder.newInstance(mContext,parent);
+            return MyStoryViewHolder.newInstance(mContext,parent,ParentsavedInstanceState);
         }else if(viewType == MyStoryViewType.My_STORY_BOTTOM_LOADER_TYPE.getType()){
-            return MyStoryViewHolder.newInstance(mContext,parent);
+            return MyStoryViewHolder.newInstance(mContext,parent,ParentsavedInstanceState);
         }else if(viewType == MyStoryViewType.AD_MOB_VIEW_TYPE.getType()){
-            return MyStoryViewHolder.newInstance(mContext,parent);
+            return MyStoryViewHolder.newInstance(mContext,parent,ParentsavedInstanceState);
         }else{
-            return MyStoryViewHolder.newInstance(mContext,parent);
+            return MyStoryViewHolder.newInstance(mContext,parent,ParentsavedInstanceState);
         }
     }
 

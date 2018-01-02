@@ -32,7 +32,7 @@ public class FileAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         if(viewType == MyStoryViewType.My_MAP_VIEW_TYPE.getType()){
-            return MapViewHolder.newInstance(mContext,parent);
+            return MapViewHolder.newInstance(mContext,parent,ParentsavedInstanceState);
         }else if(viewType == MyStoryViewType.My_IMAGE_VIEW_TYPE.getType()) {
             return ImageViewHolder.newInstance(mContext, parent);
         }else{

@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -62,6 +63,8 @@ public class MyStoryViewHolder extends MyWayViewHolder<Article> {
 
     @Override
     public void bindData(Article item) {
+        Log.e("bindData",item.toString());
+        Log.e("bindData",item.getPostedBy().toString());
         nick_text_view.setText(item.getPostedBy().getNick());
     }
 }

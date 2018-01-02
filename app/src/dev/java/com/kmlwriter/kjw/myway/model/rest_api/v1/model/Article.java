@@ -89,5 +89,21 @@ public class Article extends BaseObject implements Serializable{
         return UpdatedAt;
     }
 
-
+    @Override
+    public String toString() {
+        return "Article{" +
+                "Kml_Uri='" + Kml_Uri + '\'' +
+                ", Contents='" + Contents + '\'' +
+                ", Like=" + Like +
+                ", Like_Persons='" + Like_Persons + '\'' +
+                ", Images=" + Images +
+                ", Publish_range=" + Publish_range +
+                ", Article_List=" + Article_List +
+                ", Comments=" + Comments +
+                ", PostedBy=" + PostedBy +
+                ", CreatedAt=" + CreatedAt +
+                ", UpdatedAt=" + UpdatedAt +
+                ", viewType=" + viewType +
+                '}';
+    }
 }
