@@ -18,4 +18,5 @@
     <string name="Please_Login_text">Please SingIn or SignUp</string>
     <string name="test_text">dandsflkandlsfknalskdnfklandkadfajdslknadkvlnadklnvakldnvkandklvnakldnvlkanldksnvklandslkvnalkdnsvklandslkvnlkansdklvnalksdnklvnaldksnvklandsklvnalksdnvlknasdlklsnvlknadskvnlakdnv</string>
     <string name="request_fail_internal_string">통신 상태가 좋지 않습니다</string>
+    <string name="RealmSaveException">예기치 않은 오류 발생. 다시 시도해주세요.</string>
 </resources>

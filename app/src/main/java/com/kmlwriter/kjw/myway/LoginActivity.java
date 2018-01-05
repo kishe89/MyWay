@@ -1,11 +1,8 @@
 package com.kmlwriter.kjw.myway;
 
 import android.app.Activity;
-import android.content.Context;
 import android.content.Intent;
-import android.os.AsyncTask;
 import android.os.Bundle;
-import android.os.Environment;
 import android.support.annotation.Nullable;
 import android.util.Log;
 import android.widget.Button;
@@ -29,20 +26,12 @@ import com.kmlwriter.kjw.myway.const_string.ConstString;
 import com.kmlwriter.kjw.myway.const_string.ResponseCode;
 import com.kmlwriter.kjw.myway.model.rest_api.v1.UsersAPI;
 import com.kmlwriter.kjw.myway.model.rest_api.v1.model.User;
+import com.kmlwriter.kjw.myway.realm.RealmConfig;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
 import java.net.MalformedURLException;
-import android.net.Uri;
-
-import java.net.URISyntaxException;
 import java.net.URL;
 import java.util.Arrays;
 
@@ -50,9 +39,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import butterknife.Optional;
-import okhttp3.MediaType;
-import okhttp3.MultipartBody;
-import okhttp3.RequestBody;
+import io.realm.Realm;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -159,8 +146,20 @@ public class LoginActivity extends Activity{
                                                     public void onResponse(Call<User> call, Response<User> response) {
                                                         User user = response.body();
                                                         Intent intent = new Intent(self, ContainerActivity.class);
-                                                        startActivity(intent);
-                                                        self.finish();
+                                                        Realm realm = Realm.getInstance(RealmConfig.newInstance());
+                                                        try{
+                                                            realm.beginTransaction();
+                                                            realm.copyToRealm(user);
+                                                            realm.commitTransaction();
+                                                            startActivity(intent);
+                                                            self.finish();
+                                                        }catch (Exception e){
+                                                            Toast.makeText(self, getResources().getString(R.string.RealmSaveException),Toast.LENGTH_SHORT).show();
+                                                            Log.e(ConstString.REALM_EXCEPTION_TAG,e.toString());
+                                                            self.finish();
+                                                        }finally {
+                                                            realm.close();
+                                                        }
                                                     }
 
                                                     @Override
@@ -197,7 +196,7 @@ public class LoginActivity extends Activity{
     @Optional @OnClick(R.id.login_btn_facebook)
     protected void loginFacebook(){
         setLoginButtonClickable();
-        LoginManager.getInstance().logInWithReadPermissions(this, Arrays.asList("public_profile"));
+        LoginManager.getInstance().logInWithReadPermissions(this, Arrays.asList(ConstString.FACEBOOK_PUBLIC_PROFILE_PERMISSION));
     }
     @Optional @OnClick(R.id.login_btn_kakaotalk)
     protected void loginKakaotalk(){

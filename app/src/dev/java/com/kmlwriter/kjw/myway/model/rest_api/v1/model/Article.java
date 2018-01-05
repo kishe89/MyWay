@@ -4,11 +4,13 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
 
+import io.realm.RealmModel;
+
 /**
  * Created by kjw on 2017. 12. 5..
  */
 
-public class Article extends BaseObject implements Serializable{
+public class Article extends BaseObject implements Serializable,RealmModel{
     private String Kml_Uri;
     private String Contents;
     private int Like;

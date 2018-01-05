@@ -13,7 +13,10 @@ import java.util.ArrayList;
 import okhttp3.MultipartBody;
 import okhttp3.RequestBody;
 import retrofit2.Call;
+import retrofit2.http.Body;
 import retrofit2.http.DELETE;
+import retrofit2.http.Field;
+import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
 import retrofit2.http.Header;
 import retrofit2.http.Multipart;
@@ -77,14 +80,19 @@ public interface UsersAPI {
 
     @DELETE(ConstString.BASE_V1_PATH+ConstString.BASE_USER_PATH+ConstString.FRIENDS_PATH)
     Call<Friend_Response> FriendRemove(@Header("x-access-token") String AccessToken,
-                                            @Path("Nick") String Nick,
-                                            @Path("App") String App,
-                                            @Path("AppId") String AppId,
-                                            @Query("_id") String _id);
+                                       @Path("Nick") String Nick,
+                                       @Path("App") String App,
+                                       @Path("AppId") String AppId,
+                                       @Query("_id") String _id);
 
-    @GET(ConstString.BASE_V1_PATH+ConstString.MY_FRIENDS_PATH)
+    @GET(ConstString.BASE_V1_PATH+ConstString.BASE_USER_PATH+ConstString.MY_FRIENDS_PATH)
     Call<MyFriends> MyFriendsSearch(@Header("x-access-token") String AccessToken,
                                     @Query("Nick") String Nick,
                                     @Query("App") String App,
                                     @Query("AppId") String AppId);
+    @POST(ConstString.BASE_V1_PATH+ConstString.BASE_USER_PATH+ConstString.LOGGEDIN)
+    @FormUrlEncoded
+    Call<User> LoggedIn(@Field("Nick") String Nick,
+                        @Field("App") String App,
+                        @Field("AppId") String AppId);
 }

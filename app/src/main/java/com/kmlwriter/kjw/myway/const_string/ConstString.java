@@ -39,4 +39,18 @@ public class ConstString {
      * Articles Path Space
      */
     public static final String BASE_ARTICLE_PATH = "articles/";
+
+
+    /**
+     * Logging TAG
+     */
+
+    public static final String LOGIN_ACTIVITY_TAG = "LoginActivity";
+    public static final String REALM_EXCEPTION_TAG = "Realm Exception";
+
+    /**
+     * OAuth Permission String
+     */
+
+    public static final String FACEBOOK_PUBLIC_PROFILE_PERMISSION = "public_profile";
 }
