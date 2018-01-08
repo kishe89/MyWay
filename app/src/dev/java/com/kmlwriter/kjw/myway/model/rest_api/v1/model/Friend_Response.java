@@ -3,13 +3,11 @@ package com.kmlwriter.kjw.myway.model.rest_api.v1.model;
 import java.io.Serializable;
 import java.util.ArrayList;
 
-import io.realm.RealmModel;
-
 /**
  * Created by kjw on 2017. 12. 5..
  */
 
-public class Friend_Response implements Serializable,RealmModel {
+public class Friend_Response implements Serializable {
     private String _id;
     private String Nick;
     private String App;

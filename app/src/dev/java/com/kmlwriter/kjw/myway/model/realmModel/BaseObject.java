@@ -1,4 +1,4 @@
-package com.kmlwriter.kjw.myway.model.rest_api.v1.model;
+package com.kmlwriter.kjw.myway.model.realmModel;
 
 /**
  * Created by kjw on 2017. 12. 8..

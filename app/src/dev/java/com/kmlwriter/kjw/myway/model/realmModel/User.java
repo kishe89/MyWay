@@ -1,13 +1,14 @@
-package com.kmlwriter.kjw.myway.model.rest_api.v1.model;
+package com.kmlwriter.kjw.myway.model.realmModel;
 
-import java.io.Serializable;
 import java.util.ArrayList;
+
+import io.realm.RealmObject;
 
 /**
  * Created by kjw on 2017. 12. 5..
  */
 
-public class User implements Serializable {
+public class User extends RealmObject {
     private String _id;
     private String Nick;
     private String App;

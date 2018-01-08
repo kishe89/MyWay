@@ -1,16 +1,15 @@
-package com.kmlwriter.kjw.myway.model.rest_api.v1.model;
+package com.kmlwriter.kjw.myway.model.realmModel;
 
-import java.io.Serializable;
+import io.realm.RealmObject;
 
 /**
  * Created by kjw on 2017. 12. 5..
  */
 
-public class Profile implements Serializable {
+public class FriendPopulated extends RealmObject {
     private String Nick;
     private String App;
     private String AppId;
-    private String Profile;
 
     public String getNick() {
         return Nick;
@@ -24,17 +23,12 @@ public class Profile implements Serializable {
         return AppId;
     }
 
-    public String getProfile() {
-        return Profile;
-    }
-
     @Override
     public String toString() {
-        return "Profile{" +
+        return "FriendPopulated{" +
                 "Nick='" + Nick + '\'' +
                 ", App='" + App + '\'' +
                 ", AppId='" + AppId + '\'' +
-                ", Profile='" + Profile + '\'' +
                 '}';
     }
 }

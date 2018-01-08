@@ -1,8 +1,10 @@
-package com.kmlwriter.kjw.myway.model.rest_api.v1.model;
+package com.kmlwriter.kjw.myway.model.realmModel;
 
-import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
+
+import io.realm.RealmModel;
+import io.realm.annotations.RealmClass;
 
 /**
  * Created by kjw on 2017. 12. 5..
@@ -11,8 +13,8 @@ import java.util.Date;
 /**
  * @TODO inheritance 지원 안함, retrofit Serialization할 class랑 Realm Model 따로 생성
  */
-
-public class Article extends BaseObject implements Serializable{
+@RealmClass
+public class Article extends BaseObject implements RealmModel{
     private String Kml_Uri;
     private String Contents;
     private int Like;

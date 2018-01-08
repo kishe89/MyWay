@@ -2,13 +2,11 @@ package com.kmlwriter.kjw.myway.model.rest_api.v1.model;
 
 import java.io.Serializable;
 
-import io.realm.RealmModel;
-
 /**
  * Created by kjw on 2017. 12. 5..
  */
 
-public class FriendPopulated implements Serializable,RealmModel {
+public class FriendPopulated implements Serializable {
     private String Nick;
     private String App;
     private String AppId;

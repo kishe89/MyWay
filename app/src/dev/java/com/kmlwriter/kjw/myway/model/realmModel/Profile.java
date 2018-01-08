@@ -1,21 +1,16 @@
-package com.kmlwriter.kjw.myway.model.rest_api.v1.model;
+package com.kmlwriter.kjw.myway.model.realmModel;
 
-import java.io.Serializable;
+import io.realm.RealmObject;
 
 /**
- * Created by kjw on 2017. 12. 15..
+ * Created by kjw on 2017. 12. 5..
  */
 
-public class PostedByUser implements Serializable {
-    private String _id;
+public class Profile extends RealmObject {
     private String Nick;
     private String App;
     private String AppId;
     private String Profile;
-
-    public String get_id() {
-        return _id;
-    }
 
     public String getNick() {
         return Nick;
@@ -35,9 +30,8 @@ public class PostedByUser implements Serializable {
 
     @Override
     public String toString() {
-        return "PostedByUser{" +
-                "_id='" + _id + '\'' +
-                ", Nick='" + Nick + '\'' +
+        return "Profile{" +
+                "Nick='" + Nick + '\'' +
                 ", App='" + App + '\'' +
                 ", AppId='" + AppId + '\'' +
                 ", Profile='" + Profile + '\'' +

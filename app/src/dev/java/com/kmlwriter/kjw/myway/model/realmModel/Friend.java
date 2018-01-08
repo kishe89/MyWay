@@ -1,16 +1,20 @@
-package com.kmlwriter.kjw.myway.model.rest_api.v1.model;
+package com.kmlwriter.kjw.myway.model.realmModel;
 
-import java.io.Serializable;
+import java.util.ArrayList;
+
+import io.realm.RealmObject;
 
 /**
- * Created by kjw on 2017. 12. 15..
+ * Created by kjw on 2017. 12. 5..
  */
 
-public class PostedByUser implements Serializable {
+public class Friend extends RealmObject{
     private String _id;
     private String Nick;
     private String App;
     private String AppId;
+    private ArrayList<String>Friends;
+    private int MyFriend;
     private String Profile;
 
     public String get_id() {
@@ -29,17 +33,27 @@ public class PostedByUser implements Serializable {
         return AppId;
     }
 
+    public ArrayList<String> getFriends() {
+        return Friends;
+    }
+
+    public int getMyFriend() {
+        return MyFriend;
+    }
+
     public String getProfile() {
         return Profile;
     }
 
     @Override
     public String toString() {
-        return "PostedByUser{" +
+        return "Friend{" +
                 "_id='" + _id + '\'' +
                 ", Nick='" + Nick + '\'' +
                 ", App='" + App + '\'' +
                 ", AppId='" + AppId + '\'' +
+                ", Friends=" + Friends +
+                ", MyFriend=" + MyFriend +
                 ", Profile='" + Profile + '\'' +
                 '}';
     }
