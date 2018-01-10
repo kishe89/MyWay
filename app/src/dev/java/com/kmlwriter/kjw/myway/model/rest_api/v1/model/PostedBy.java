@@ -6,7 +6,7 @@ import java.io.Serializable;
  * Created by kjw on 2017. 12. 15..
  */
 
-public class PostedByUser implements Serializable {
+public class PostedBy implements Serializable {
     private String _id;
     private String Nick;
     private String App;
@@ -35,7 +35,7 @@ public class PostedByUser implements Serializable {
 
     @Override
     public String toString() {
-        return "PostedByUser{" +
+        return "PostedBy{" +
                 "_id='" + _id + '\'' +
                 ", Nick='" + Nick + '\'' +
                 ", App='" + App + '\'' +

@@ -11,6 +11,21 @@ public class FriendPopulated implements Serializable {
     private String App;
     private String AppId;
 
+    public FriendPopulated setNick(String nick) {
+        Nick = nick;
+        return this;
+    }
+
+    public FriendPopulated setApp(String app) {
+        App = app;
+        return this;
+    }
+
+    public FriendPopulated setAppId(String appId) {
+        AppId = appId;
+        return this;
+    }
+
     public String getNick() {
         return Nick;
     }

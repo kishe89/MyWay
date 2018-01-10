@@ -53,4 +53,11 @@ public class ConstString {
      */
 
     public static final String FACEBOOK_PUBLIC_PROFILE_PERMISSION = "public_profile";
+
+
+    /**
+     * Normal Const
+     */
+    public static final float NORMAL_IMAGE_THUMBNAIL_PERCENTAGE = 0.3f;
+    public static final int FIRST_PAGE_NO = 0;
 }

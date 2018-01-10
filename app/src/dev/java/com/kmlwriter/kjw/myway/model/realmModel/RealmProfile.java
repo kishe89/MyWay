@@ -6,7 +6,7 @@ import io.realm.RealmObject;
  * Created by kjw on 2017. 12. 5..
  */
 
-public class Profile extends RealmObject {
+public class RealmProfile extends RealmObject {
     private String Nick;
     private String App;
     private String AppId;

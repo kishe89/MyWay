@@ -3,13 +3,19 @@ package com.kmlwriter.kjw.myway.model.realmModel;
 import io.realm.RealmObject;
 
 /**
- * Created by kjw on 2017. 12. 5..
+ * Created by kjw on 2017. 12. 15..
  */
 
-public class FriendPopulated extends RealmObject {
+public class RealmPostedByUser extends RealmObject {
+    private String _id;
     private String Nick;
     private String App;
     private String AppId;
+    private String Profile;
+
+    public String get_id() {
+        return _id;
+    }
 
     public String getNick() {
         return Nick;
@@ -23,12 +29,18 @@ public class FriendPopulated extends RealmObject {
         return AppId;
     }
 
+    public String getProfile() {
+        return Profile;
+    }
+
     @Override
     public String toString() {
-        return "FriendPopulated{" +
-                "Nick='" + Nick + '\'' +
+        return "PostedBy{" +
+                "_id='" + _id + '\'' +
+                ", Nick='" + Nick + '\'' +
                 ", App='" + App + '\'' +
                 ", AppId='" + AppId + '\'' +
+                ", Profile='" + Profile + '\'' +
                 '}';
     }
 }

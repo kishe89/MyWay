@@ -16,7 +16,7 @@ import java.util.ArrayList;
  */
 
 public class MyStoryAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
-    private ArrayList<BaseObject> mArticles;
+    private ArrayList<Article> mArticles;
     private Context mContext;
     private Bundle ParentsavedInstanceState;
     public MyStoryAdapter(Context mContext, Bundle savedInstanceState) {
@@ -25,11 +25,11 @@ public class MyStoryAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
         this.ParentsavedInstanceState = savedInstanceState;
     }
 
-    public ArrayList<BaseObject> getmArticles() {
+    public ArrayList<Article> getmArticles() {
         return mArticles;
     }
 
-    public void setmArticles(ArrayList<BaseObject> mArticles) {
+    public void setmArticles(ArrayList<Article> mArticles) {
         this.mArticles = mArticles;
     }
 

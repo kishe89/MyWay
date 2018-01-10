@@ -24,8 +24,10 @@ import com.facebook.login.LoginManager;
 import com.facebook.login.LoginResult;
 import com.kmlwriter.kjw.myway.const_string.ConstString;
 import com.kmlwriter.kjw.myway.const_string.ResponseCode;
+import com.kmlwriter.kjw.myway.model.realmModel.RealmUser;
 import com.kmlwriter.kjw.myway.model.rest_api.v1.UsersAPI;
 import com.kmlwriter.kjw.myway.model.rest_api.v1.model.User;
+
 import com.kmlwriter.kjw.myway.realm.RealmConfig;
 
 import org.json.JSONException;
@@ -145,11 +147,23 @@ public class LoginActivity extends Activity{
                                                     @Override
                                                     public void onResponse(Call<User> call, Response<User> response) {
                                                         User user = response.body();
+                                                        RealmUser realmUser = new RealmUser().set__v(user.get__v())
+                                                                .set_id(user.get_id())
+                                                                .setAccessToken(user.getAccessToken())
+                                                                .setAgree_Wait_Friends(user.getAgree_Wait_Friends(1))
+                                                                .setApp(user.getApp())
+                                                                .setAppId(user.getAppId())
+                                                                .setDecryptValuel(user.getDecryptValuel())
+                                                                .setFriends(user.getFriends(1))
+                                                                .setNick(user.getNick())
+                                                                .setProfile(user.getProfile())
+                                                                .setUpload_Article(user.getUpload_Article(1));
+
                                                         Intent intent = new Intent(self, ContainerActivity.class);
                                                         Realm realm = Realm.getInstance(RealmConfig.newInstance());
                                                         try{
                                                             realm.beginTransaction();
-                                                            realm.copyToRealm(user);
+                                                            realm.copyToRealm(realmUser);
                                                             realm.commitTransaction();
                                                             startActivity(intent);
                                                             self.finish();

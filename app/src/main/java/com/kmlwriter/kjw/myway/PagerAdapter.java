@@ -4,9 +4,6 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 
-import java.util.ArrayList;
-import java.util.List;
-
 /**
  * Created by kjw on 2017. 12. 6..
  */
@@ -21,16 +18,16 @@ public class PagerAdapter extends FragmentPagerAdapter{
     public Fragment getItem(int position) {
         switch (position) {
             case 0:
-                BlankFragment tab1 = BlankFragment.newInstance("dd","dd");
+                MyStoryFragment tab1 = MyStoryFragment.newInstance("dd","dd");
                 return tab1;
             case 1:
-                BlankFragment tab2 = BlankFragment.newInstance("dd","dd");
+                MyStoryFragment tab2 = MyStoryFragment.newInstance("dd","dd");
                 return tab2;
             case 2:
-                BlankFragment tab3 = BlankFragment.newInstance("dd","dd");
+                MyStoryFragment tab3 = MyStoryFragment.newInstance("dd","dd");
                 return tab3;
             case 3:
-                BlankFragment tab4 = BlankFragment.newInstance("dd","dd");
+                MyStoryFragment tab4 = MyStoryFragment.newInstance("dd","dd");
                 return tab4;
             default:
                 return null;

@@ -3,6 +3,8 @@ package com.kmlwriter.kjw.myway.model.rest_api.v1;
 import com.kmlwriter.kjw.myway.const_string.ConstString;
 import com.kmlwriter.kjw.myway.model.rest_api.v1.model.Article;
 
+import java.util.ArrayList;
+
 import okhttp3.MultipartBody;
 import okhttp3.RequestBody;
 import retrofit2.Call;
@@ -20,11 +22,11 @@ import retrofit2.http.Query;
 public interface ArticlesAPI {
 
     @GET(ConstString.BASE_V1_PATH+ConstString.BASE_ARTICLE_PATH)
-    Call<Article> ArticleSearch(@Header("x-access-token") String AccessToken,
-                                @Query("Nick") String Nick,
-                                @Query("App") String App,
-                                @Query("AppId") String AppId,
-                                @Query("page_no") int page_no);
+    Call<ArrayList<Article>> ArticleSearch(@Header("x-access-token") String AccessToken,
+                                           @Query("Nick") String Nick,
+                                           @Query("App") String App,
+                                           @Query("AppId") String AppId,
+                                           @Query("page_no") int page_no);
 
     @Multipart
     @POST(ConstString.BASE_V1_PATH+ConstString.BASE_ARTICLE_PATH)

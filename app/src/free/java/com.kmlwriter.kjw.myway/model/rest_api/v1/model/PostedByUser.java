@@ -37,7 +37,7 @@ public class PostedByUser implements Serializable,RealmModel {
 
     @Override
     public String toString() {
-        return "PostedByUser{" +
+        return "PostedBy{" +
                 "_id='" + _id + '\'' +
                 ", Nick='" + Nick + '\'' +
                 ", App='" + App + '\'' +

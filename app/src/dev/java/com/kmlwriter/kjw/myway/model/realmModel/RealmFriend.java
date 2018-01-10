@@ -2,18 +2,19 @@ package com.kmlwriter.kjw.myway.model.realmModel;
 
 import java.util.ArrayList;
 
+import io.realm.RealmList;
 import io.realm.RealmObject;
 
 /**
  * Created by kjw on 2017. 12. 5..
  */
 
-public class Friend extends RealmObject{
+public class RealmFriend extends RealmObject{
     private String _id;
     private String Nick;
     private String App;
     private String AppId;
-    private ArrayList<String>Friends;
+    private RealmList<String> Friends;
     private int MyFriend;
     private String Profile;
 
@@ -33,7 +34,7 @@ public class Friend extends RealmObject{
         return AppId;
     }
 
-    public ArrayList<String> getFriends() {
+    public RealmList<String> getFriends() {
         return Friends;
     }
 

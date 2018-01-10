@@ -1,5 +1,8 @@
 package com.kmlwriter.kjw.myway.model.rest_api.v1.model;
 
+import com.google.gson.annotations.Expose;
+import com.google.gson.annotations.SerializedName;
+
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
@@ -12,23 +15,27 @@ import java.util.Date;
  * @TODO inheritance 지원 안함, retrofit Serialization할 class랑 Realm Model 따로 생성
  */
 
-public class Article extends BaseObject implements Serializable{
+public class Article implements Serializable{
     private String Kml_Uri;
     private String Contents;
     private int Like;
     private String Like_Persons;
     private ArrayList<String> Images;
     private int Publish_range;
-    private ArrayList<String>Article_List;
+    private ArrayList<ArticleItem>Article_List;
     private ArrayList<String>Comments;
-    private PostedByUser PostedBy;
+
+    @SerializedName("PostedBy")
+    @Expose
+    private PostedBy postedBy;
+
     private Date CreatedAt;
     private Date UpdatedAt;
     private int viewType;
 
 
     public Article(int viewType) {
-        super(viewType);
+//        super(viewType);
         setViewType(viewType);
     }
 
@@ -45,7 +52,7 @@ public class Article extends BaseObject implements Serializable{
         if(this.Kml_Uri != null && (!(this.Kml_Uri.isEmpty()))){
             getFilesURI.add(Kml_Uri);
         }
-        getFilesURI.addAll(Article_List);
+        getFilesURI.addAll(Images);
         return getFilesURI;
     }
 
@@ -73,7 +80,7 @@ public class Article extends BaseObject implements Serializable{
         return Publish_range;
     }
 
-    public ArrayList<String> getArticle_List() {
+    public ArrayList<ArticleItem> getArticle_List() {
         return Article_List;
     }
 
@@ -81,8 +88,8 @@ public class Article extends BaseObject implements Serializable{
         return Comments;
     }
 
-    public PostedByUser getPostedBy() {
-        return PostedBy;
+    public PostedBy getPostedBy() {
+        return postedBy;
     }
 
     public Date getCreatedAt() {
@@ -104,7 +111,7 @@ public class Article extends BaseObject implements Serializable{
                 ", Publish_range=" + Publish_range +
                 ", Article_List=" + Article_List +
                 ", Comments=" + Comments +
-                ", PostedBy=" + PostedBy +
+                ", postedBy=" + postedBy +
                 ", CreatedAt=" + CreatedAt +
                 ", UpdatedAt=" + UpdatedAt +
                 ", viewType=" + viewType +

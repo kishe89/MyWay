@@ -3,6 +3,8 @@ package com.kmlwriter.kjw.myway.model.rest_api.v1.model;
 import java.io.Serializable;
 import java.util.ArrayList;
 
+import io.realm.RealmList;
+
 /**
  * Created by kjw on 2017. 12. 5..
  */
@@ -55,15 +57,37 @@ public class User implements Serializable {
     public ArrayList<String> getUpload_Article() {
         return Upload_Article;
     }
-
+    public RealmList<String> getUpload_Article(int i) {
+        RealmList<String> list = new RealmList<>();
+        for(String item : this.Agree_Wait_Friends){
+            list.add(item);
+        }
+        return list;
+    }
     public ArrayList<String> getAgree_Wait_Friends() {
+        RealmList<String> list = new RealmList<>();
+        for(String item : this.Agree_Wait_Friends){
+            list.add(item);
+        }
         return Agree_Wait_Friends;
     }
-
+    public RealmList<String> getAgree_Wait_Friends(int i) {
+        RealmList<String> list = new RealmList<>();
+        for(String item : this.Agree_Wait_Friends){
+            list.add(item);
+        }
+        return list;
+    }
     public ArrayList<String> getFriends() {
         return Friends;
     }
-
+    public RealmList<String> getFriends(int i) {
+        RealmList<String> list = new RealmList<>();
+        for(String item : this.Friends){
+            list.add(item);
+        }
+        return list;
+    }
     @Override
     public String toString() {
         return "User{" +

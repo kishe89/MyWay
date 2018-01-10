@@ -3,7 +3,9 @@ package com.kmlwriter.kjw.myway.model.realmModel;
 import java.util.ArrayList;
 import java.util.Date;
 
+import io.realm.RealmList;
 import io.realm.RealmModel;
+import io.realm.RealmObject;
 import io.realm.annotations.RealmClass;
 
 /**
@@ -13,24 +15,25 @@ import io.realm.annotations.RealmClass;
 /**
  * @TODO inheritance 지원 안함, retrofit Serialization할 class랑 Realm Model 따로 생성
  */
-@RealmClass
-public class Article extends BaseObject implements RealmModel{
+
+public class RealmArticle extends RealmObject{
     private String Kml_Uri;
     private String Contents;
     private int Like;
     private String Like_Persons;
-    private ArrayList<String> Images;
+    private RealmList<String> Images;
     private int Publish_range;
-    private ArrayList<String>Article_List;
-    private ArrayList<String>Comments;
-    private PostedByUser PostedBy;
+    private RealmList<String> Article_List;
+    private RealmList<String>Comments;
+    private RealmPostedByUser PostedBy;
     private Date CreatedAt;
     private Date UpdatedAt;
     private int viewType;
 
+    public RealmArticle() {
+    }
 
-    public Article(int viewType) {
-        super(viewType);
+    public RealmArticle(int viewType) {
         setViewType(viewType);
     }
 
@@ -67,7 +70,7 @@ public class Article extends BaseObject implements RealmModel{
         return Like_Persons;
     }
 
-    public ArrayList<String> getImages() {
+    public RealmList<String> getImages() {
         return Images;
     }
 
@@ -75,15 +78,15 @@ public class Article extends BaseObject implements RealmModel{
         return Publish_range;
     }
 
-    public ArrayList<String> getArticle_List() {
+    public RealmList<String> getArticle_List() {
         return Article_List;
     }
 
-    public ArrayList<String> getComments() {
+    public RealmList<String> getComments() {
         return Comments;
     }
 
-    public PostedByUser getPostedBy() {
+    public RealmPostedByUser getPostedBy() {
         return PostedBy;
     }
 

@@ -1,23 +1,15 @@
 package com.kmlwriter.kjw.myway.model.realmModel;
 
-import java.util.ArrayList;
-
 import io.realm.RealmObject;
 
 /**
  * Created by kjw on 2017. 12. 5..
  */
 
-public class Friend_Response extends RealmObject {
-    private String _id;
+public class RealmFriendPopulated extends RealmObject {
     private String Nick;
     private String App;
     private String AppId;
-    private ArrayList<FriendPopulated> Friends;
-
-    public String get_id() {
-        return _id;
-    }
 
     public String getNick() {
         return Nick;
@@ -31,18 +23,27 @@ public class Friend_Response extends RealmObject {
         return AppId;
     }
 
-    public ArrayList<FriendPopulated> getFriends() {
-        return Friends;
+    public RealmFriendPopulated setNick(String nick) {
+        Nick = nick;
+        return this;
+    }
+
+    public RealmFriendPopulated setApp(String app) {
+        App = app;
+        return this;
+    }
+
+    public RealmFriendPopulated setAppId(String appId) {
+        AppId = appId;
+        return this;
     }
 
     @Override
     public String toString() {
-        return "Friend_Response{" +
-                "_id='" + _id + '\'' +
-                ", Nick='" + Nick + '\'' +
+        return "RealmFriendPopulated{" +
+                "Nick='" + Nick + '\'' +
                 ", App='" + App + '\'' +
                 ", AppId='" + AppId + '\'' +
-                ", Friends=" + Friends +
                 '}';
     }
 }
