@@ -3,11 +3,9 @@ package com.kmlwriter.kjw.myway.model.adapter.mystory;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.ViewGroup;
 
 import com.kmlwriter.kjw.myway.model.rest_api.v1.model.Article;
-import com.kmlwriter.kjw.myway.model.rest_api.v1.model.BaseObject;
 
 import java.util.ArrayList;
 
@@ -17,6 +15,13 @@ import java.util.ArrayList;
 
 public class MyStoryAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     private ArrayList<Article> mArticles;
+
+    /**
+     * @TODO view type 어떻게 처리할지 생각해보기
+     * private ArrayList<AddMob> mAddMob;
+     * private ArrayList<Object> mList;
+     */
+
     private Context mContext;
     private Bundle ParentsavedInstanceState;
     public MyStoryAdapter(Context mContext, Bundle savedInstanceState) {
@@ -54,7 +59,7 @@ public class MyStoryAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
         if(((MyWayViewHolder)holder).getViewType()==MyStoryViewType.MY_STORY_VIEW_TYPE.getType()){
             ((MyWayViewHolder) holder).bindData(mArticles.get(position));
-            ((MyStoryViewHolder) holder).setFileAdapter(mContext, (Article) mArticles.get(position));
+            ((MyStoryViewHolder) holder).setFileAdapter(mContext, mArticles.get(position));
         } else if(((MyWayViewHolder)holder).getViewType()==MyStoryViewType.My_STORY_TOP_LOADER_TYPE.getType()){
             ((MyWayViewHolder) holder).bindData(mArticles.get(position));
 

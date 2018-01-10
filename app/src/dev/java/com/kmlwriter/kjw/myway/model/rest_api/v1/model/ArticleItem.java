@@ -12,22 +12,7 @@ import java.util.Date;
  */
 
 public class ArticleItem implements Serializable{
-    /**
-     * {
-     "_id": "5a34ba808928b7003e5c1118",
-     "Title": "Hello World1",
-     "Place": "용당 동아아파트104동",
-     "PlaceType": "요식업",
-     "Loc": [
-     127.1231312,
-     34.324224
-     ],
-     "PostedBy": "5a2ba63eec5be6004055c761",
-     "__v": 0,
-     "UpdatedAt": "2017-12-16T06:17:36.687Z",
-     "CreatedAt": "2017-12-16T06:17:36.687Z"
-     }
-     */
+
     private String _id;
     private String Title;
     private String place;

@@ -1,10 +1,12 @@
 package com.kmlwriter.kjw.myway.model.rest_api.v1.model;
 
+import java.io.Serializable;
+
 /**
  * Created by kjw on 2017. 12. 8..
  */
 
-public class BaseObject{
+public class BaseObject {
     private int viewType;
 
     public BaseObject() {

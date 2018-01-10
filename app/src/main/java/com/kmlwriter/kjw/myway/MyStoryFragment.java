@@ -13,6 +13,7 @@ import android.view.ViewGroup;
 
 import com.kmlwriter.kjw.myway.const_string.ConstString;
 import com.kmlwriter.kjw.myway.model.adapter.mystory.MyStoryAdapter;
+import com.kmlwriter.kjw.myway.model.rest_api.v1.model.BaseObject;
 import com.kmlwriter.kjw.myway.model.realmModel.RealmUser;
 import com.kmlwriter.kjw.myway.model.rest_api.v1.ArticlesAPI;
 import com.kmlwriter.kjw.myway.model.rest_api.v1.model.Article;
